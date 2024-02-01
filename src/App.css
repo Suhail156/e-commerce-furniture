@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+}
+/* .bg-body-tertiary{
+  background-color: black !important;
+} */
+.bg-body{
+  background-color: black !important;
+}
+.build{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
