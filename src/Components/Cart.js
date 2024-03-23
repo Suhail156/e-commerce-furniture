@@ -1,13 +1,26 @@
-import React, { useContext, useEffect} from 'react'
+
 import { useNavigate} from 'react-router-dom'
 import { User } from '../App'
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+
+
+
+
+import React,{useContext} from 'react';
+import {
+  MDBCard,
+  MDBCardTitle,
+  MDBCardText,
+  MDBCardBody,
+  MDBCardImage,
+  MDBRow,
+  MDBCol
+} from 'mdb-react-ui-kit';
 
 const Cart = () => {
     
     
-    const{cart,setCart,data , use,render,setrender}=useContext(User)
+    const{ use,render,setrender}=useContext(User)
     
       const nav=useNavigate()
 
@@ -19,7 +32,8 @@ const Cart = () => {
       }
       const decrement=(id)=>{
         const add=use.cart.find((x)=>x.id==id)
-       if(add.qty>1) {add.qty -= 1
+       if(add.qty>1) 
+       {add.qty -= 1
         setrender(!render)}
       }
        
@@ -27,11 +41,8 @@ const Cart = () => {
        const deletehandler=(id)=>{
         const filterdata=use.cart.filter((item)=>item.id !== parseInt(id))
         
-        
-        
-       use.cart = filterdata
+        use.cart = filterdata
        setrender(!render)
-        console.log(cart);
        }
 
        console.log(use)
@@ -39,37 +50,75 @@ const Cart = () => {
 
   return (
     <div>
-      {/* <img src={single.img}/>
-      <h1>{single.title}</h1>
-      <h3>{single.price}</h3> */}
-      <div className='d-flex' style={{ flexWrap:'wrap'}}>
+      <h3>My Cart</h3>
       {use?.cart?.map((single)=>(
+    <MDBCard style={{ maxWidth: '1540px' }}>
+    <MDBRow className='g-0'>
+      <MDBCol md='4'>
+        <MDBCardImage src={single.img} alt='...' fluid />
+      </MDBCol>
+      <MDBCol md='8'>
+        <MDBCardBody>
+          <MDBCardTitle> {single.title}</MDBCardTitle>
+          <MDBCardText>
+             {single.qty}
+          </MDBCardText>
+          <MDBCardText>
+          ₹{single.qty*single.price}
+          </MDBCardText>
+          {/* <MDBCardText>
+            <small className='text-muted'>Last updated 3 mins ago</small>
+          </MDBCardText> */}
+          <Button  onClick={()=>increment(single.id)}>+</Button>
+             <Button  onClick={()=>decrement(single.id)}>-</Button>
+            <Button  variant="primary" onClick={()=>nav('/payment')}>Payment</Button>
+          <br/> <br/>
+          <Button className='bg-danger' onClick={()=>deletehandler(single.id)}>Remove</Button>
+        </MDBCardBody>
+      </MDBCol>
+    </MDBRow>
+  </MDBCard>
+  )) }
+  <div> <span><>{use&&<>total price:{use.cart.reduce((acc,curr)=>acc+=curr.price*curr.qty,0)}</>}</></span></div>
+  </div>
+ )
+ }
+ export default Cart
+ 
 
-          <div>
-              <Card style={{ width: '200px',marginLeft:'250px', height:'10px'}}>
-      <Card.Img variant="top" src={single.img} />
-      <Card.Body>
-        <Card.Title >{single.title}</Card.Title>
-        <Card.Title>{single.qty}</Card.Title>
-        <Button onClick={()=>increment(single.id)}>+</Button>
-        <Button onClick={()=>decrement(single.id)}>-</Button>
-        <Card.Title>₹{single.qty*single.price}</Card.Title>
-        
-        
-        
-        <Button   variant="primary" onClick={()=>nav('/payment')}>Payment</Button>
-        <br/> <br/>
-        <Button onClick={()=>deletehandler(single.id)}>Remove</Button>
-         
-      </Card.Body>
-    </Card>
-         </div>
-    ))
-         }
-      
-       </div>
-    </div>
-  )
-}
 
-export default Cart
+
+
+// export default function App() {
+//   return (
+
+//   );
+// }
+
+
+
+{/* <div >
+<h3>My Cart</h3>
+
+<div>
+<Card>
+
+<Card.Header>Your Item</Card.Header>
+<Card.Body>
+<Card.Img style={{width:'20%',height:'100px'}}  />
+<Card.Title></Card.Title>
+<Card.Title></Card.Title>
+ <Card.Title></Card.Title>        
+
+
+  
+
+</Card.Body>
+
+</Card>
+
+</div>
+
+
+
+</div> */}

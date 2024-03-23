@@ -1,20 +1,19 @@
 import React, { useContext } from 'react'
 import { User } from '../App'
-import { useParams } from 'react-router-dom'
+import { Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const Payment = () => {
- const{cart}=useContext(User)
-  const{id}=useParams()
+ const{cart,use}=useContext(User)
+   const nav=useNavigate()
+     console.log(cart);
 
-    let pay=cart.filter((x)=>x.id===id)
-    console.log(cart);
+     
+    
   return (
     <div>
-      <h1>payment</h1>
-      {pay.map((item)=>(
-        <h6>{pay.price}</h6>
-      ))}
-       
+      <h1>{use&&<>total price:{use.cart.reduce((acc,curr)=>acc+=curr.price*curr.qty,0)}</>}</h1>
+       <Button onClick={()=>nav('/cart')}>Cancel</Button>
     </div>
   )
 }

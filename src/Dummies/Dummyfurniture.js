@@ -219,6 +219,13 @@ export const Homeimage=[{
         id:3,
         img:'https://images.unsplash.com/photo-1534357808625-fdbecdd0b6da?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fGxpZ2h0JTIwYnVsYnxlbnwwfHwwfHx8MA%3D%3D',
         title:'Decor',
-        type:'decor'
+        type:'lamps'
     },
+    ,
+    {
+        id:4,
+        img:'https://images.unsplash.com/photo-1600988718533-57e010d001d0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODJ8fGhvbWUlMjBkZWNvcnxlbnwwfHwwfHx8MA%3D%3D',
+        title:'Decor',
+        type:'decor'
+    }
 ] 

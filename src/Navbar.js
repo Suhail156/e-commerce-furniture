@@ -5,16 +5,16 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { FaUser } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { User } from './App';
 import { RiLogoutCircleRLine } from "react-icons/ri";
 
 
 function CustomNavbar() {
-    const {type}= useParams()
+    
 const nav=useNavigate()
-const{dummy,search,setsearch,use,setuse, setdata, data}=useContext(User)
+const{dummy,search,setsearch,use,setuse}=useContext(User)
    
  const searchedinput=(e)=>{
         e.preventDefault()
@@ -40,7 +40,7 @@ const{dummy,search,setsearch,use,setuse, setdata, data}=useContext(User)
  }
 
     return (
-        <div>
+        <div style={{}}>
             <div  style={{backgroundColor:'black'}}>
                 <Navbar expand="lg" className="bg-body-dark" >
                     <Container fluid>
@@ -62,7 +62,7 @@ const{dummy,search,setsearch,use,setuse, setdata, data}=useContext(User)
                                 className="me-auto my-2 my-lg-0 "
                                 style={{ maxHeight: '100px',marginLeft:'500px'}}
                                 navbarScroll 
-                            >
+                            > 
                                 <Nav.Link style={{color:'white'}}  >
                                     {!use?<FaUser onClick={()=>nav('/login')} />:
                                     <><RiLogoutCircleRLine onClick={logout} />

@@ -15,15 +15,16 @@ const Login = () => {
           let password=inputref.current.password.value
 
            let userdata=data.find((item)=>item.name==name&&item.password==password)
+           if(name=='suhail'&&password==1234){
+              nav('/admin')
+           }
+
            if(userdata)
          {
             setuse(userdata)
             nav('/') 
         
           
-          }else{
-    
-            alert('sorry')
           }
      }
      console.log(use)
